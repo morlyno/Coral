@@ -87,7 +87,7 @@ namespace Coral {
 		}
 
 		template <typename... TArgs>
-		void InvokeStaticMethod(std::string_view InMethodName, TArgs&&... InParameters)
+		void InvokeStaticMethod(std::string_view InMethodName, TArgs&&... InParameters) const
 		{
 			constexpr size_t parameterCount = sizeof...(InParameters);
 

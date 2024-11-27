@@ -732,6 +732,23 @@ internal static class TypeInterface
 	}
 
 	[UnmanagedCallersOnly]
+	internal static unsafe Bool32 HasFieldInfoAttribute(int InFieldInfo, int InAttributeType)
+	{
+		try
+		{
+			if (!s_CachedFields.TryGetValue(InFieldInfo, out var fieldInfo) || !s_CachedTypes.TryGetValue(InAttributeType, out var attributeType))
+				return false;
+
+			return fieldInfo.GetCustomAttribute(attributeType) != null;
+		}
+		catch (Exception ex)
+		{
+			HandleException(ex);
+			return false;
+		}
+	}
+
+	[UnmanagedCallersOnly]
 	internal static unsafe NativeString GetPropertyInfoName(int InPropertyInfo)
 	{
 		try

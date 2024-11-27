@@ -55,6 +55,7 @@ namespace Coral {
 	using GetFieldInfoTypeFn = void (*)(ManagedHandle, TypeId*);
 	using GetFieldInfoAccessibilityFn = TypeAccessibility (*)(ManagedHandle);
 	using GetFieldInfoAttributesFn = void (*)(ManagedHandle, TypeId*, int32_t*);
+	using HasFieldInfoAttributeFn = Bool32 (*)(ManagedHandle, TypeId);
 #pragma endregion
 
 #pragma region PropertyInfo
@@ -128,6 +129,7 @@ namespace Coral {
 		GetFieldInfoTypeFn GetFieldInfoTypeFptr = nullptr;
 		GetFieldInfoAccessibilityFn GetFieldInfoAccessibilityFptr = nullptr;
 		GetFieldInfoAttributesFn GetFieldInfoAttributesFptr = nullptr;
+		HasFieldInfoAttributeFn HasFieldInfoAttributeFptr = nullptr;
 #pragma endregion
 
 #pragma region PropertyInfo

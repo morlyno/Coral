@@ -17,6 +17,7 @@ namespace Coral {
 		TypeAccessibility GetAccessibility() const;
 
 		std::vector<Attribute> GetAttributes() const;
+		bool HasAttribute(const Type& attributeType) const;
 
 	private:
 		ManagedHandle m_Handle = -1;

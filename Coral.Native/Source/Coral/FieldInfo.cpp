@@ -42,4 +42,9 @@ namespace Coral {
 		return result;
 	}
 
+	bool FieldInfo::HasAttribute(const Type& attributeType) const
+	{
+		return s_ManagedFunctions.HasFieldInfoAttributeFptr(m_Handle, attributeType.m_Id);
+	}
+
 }
