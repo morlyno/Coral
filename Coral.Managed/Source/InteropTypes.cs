@@ -212,7 +212,7 @@ public struct NativeInstance<T> : IDisposable
 
 	public static implicit operator NativeInstance<T>(T instance)
 	{
-		return new(GCHandle.ToIntPtr(GCHandle.Alloc(instance, GCHandleType.Normal)));
+		return new(GCHandle.ToIntPtr(GCHandle.Alloc(instance, GCHandleType.Pinned)));
 	}
 
 	public static implicit operator T?(NativeInstance<T> InInstance)
