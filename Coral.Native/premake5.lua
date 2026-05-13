@@ -84,10 +84,16 @@ function LinkNethost()
         linkoptions { _G["CORAL_NETHOST_BASE_PATH"] .. "libnethost.a" }
     -- NOTE: Nethost on Windows can't be static as it will conflict with application runtimes
     filter { "system:windows" }
-        links { _G["CORAL_NETHOST_BASE_PATH"] .. "nethost.lib" }
+        links { _G["CORAL_NETHOST_BASE_PATH"] .. "nethost" }
         -- Suppress benign duplicate import descriptor warnings from nethost.
         linkoptions { "/ignore:4006" }
     filter {}
+end
+
+function PostbuildNethost()
+    postbuildcommands {
+        '{COPYFILE} "' .. _G["CORAL_NETHOST_BASE_PATH"] .. 'nethost.dll" "%{cfg.targetdir}"'
+    }
 end
 
 project "Coral.Native"
